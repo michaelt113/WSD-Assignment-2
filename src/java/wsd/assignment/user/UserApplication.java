@@ -1,6 +1,7 @@
 package wsd.assignment.user;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -13,6 +14,16 @@ public class UserApplication {
 	
 	private String filePath;
 	private Users users;
+                
+        public UserApplication(String filePath, Users users) {
+            super();
+            this.filePath = filePath;
+            this.users = users;
+	}
+        
+        public UserApplication(){
+            super();
+        }
 	
 	public String getFilePath() {
 		return filePath;
@@ -36,5 +47,18 @@ public class UserApplication {
 	public void setUsers(Users users) {
 		this.users = users;
 	}
+        
+        public User getUser(String email){
+            return users.getUser(email);
+        }
+        
+        	public void saveUsers() throws JAXBException, IOException {
+		JAXBContext jc = JAXBContext.newInstance(Users.class);
+		Marshaller m = jc.createMarshaller();
+		m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+		m.marshal(users, new FileOutputStream("/Users/Bahamut/NetBeansProjects/WSD Assignment 2/build/web/WEB-INF/users.xml"));
+                }
+	
+        
         
 }

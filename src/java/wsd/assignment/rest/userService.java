@@ -8,6 +8,8 @@ import javax.xml.bind.JAXBException;
 import wsd.assignment.user.UserApplication;
 
 import java.io.*;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
 
 @Path("/userApp")
 public class userService {
@@ -54,4 +56,5 @@ public class userService {
 		User user = getUserApp().getUsers().findByEmail(email);
 		return user;
 	}
+        
 }

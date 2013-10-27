@@ -32,6 +32,7 @@
 			session.setAttribute("user", user);
 
 			userApp.getUsers().addUser(user);
+                        userApp.saveUsers();
 			response.sendRedirect("index.jsp");
 			//out.print("<p>Welcome," + name + "</p>");
 			//out.print("<p>Your Email is" + email + "</p>");
